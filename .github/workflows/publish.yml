@@ -1,0 +1,36 @@
+name: WebJar Publish
+
+# Workflow sadece GitHub Release oluşturulduğunda tetiklenir
+on:
+  release:
+    types: [published]
+
+jobs:
+  build-and-publish:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Repo'yu çek
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      # Node.js kur
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+
+      # NPM bağımlılıklarını yükle
+      - name: Install dependencies
+        run: npm install
+
+      # Build işlemi
+      - name: Build package
+        run: npm run build
+
+      # WebJar olarak deploy et
+      - name: Publish to WebJars
+        run: |
+          curl -L https://github.com/webjars/webjars-deploy/raw/master/webjar-deploy.sh | bash
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
