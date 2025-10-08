@@ -1,8 +1,19 @@
 {
-  "name": "vite-project",
-  "private": true,
-  "version": "0.0.0",
+  "name": "@yusufkumandaveren/my-input-component",
+  "version": "1.0.0",
+  "description": "Custom input component built with Lit",
   "type": "module",
+  "main": "dist/my-input.js",
+  "module": "dist/my-input.js",
+  "exports": {
+    ".": "./dist/my-input.js"
+  },
+  "files": [
+    "dist"
+  ],
+  "keywords": ["lit", "web-components", "input", "custom-element"],
+  "author": "yusuf",
+  "license": "MIT",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
@@ -13,5 +24,9 @@
   },
   "dependencies": {
     "lit": "^3.3.1"
-  }
+  },
+  "peerDependencies": {
+    "lit": "^3.0.0"
+  },
+  "repository": { "type":"git", "url":"https://github.com/Yusufkumandaveren/lit-input-component" }
 }
