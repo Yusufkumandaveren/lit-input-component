@@ -9,9 +9,11 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      # 1️⃣ Repo’yu çek
       - name: Checkout repository
         uses: actions/checkout@v4
 
+      # 2️⃣ Java kur
       - name: Set up Java
         uses: actions/setup-java@v4
         with:
@@ -20,11 +22,13 @@ jobs:
           server-id: github
           settings-path: ${{ github.workspace }}
 
+      # 3️⃣ WebJar build
       - name: Build WebJar
         run: |
           cd webjar
           mvn -B clean package
 
+      # 4️⃣ GitHub Packages’a deploy
       - name: Publish to GitHub Packages
         run: |
           cd webjar
