@@ -1,0 +1,75 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
+                             http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>com.github.yusufkumandaveren</groupId>
+  <artifactId>my-input-component</artifactId>
+  <version>1.0.1</version>
+  <packaging>jar</packaging>
+
+  <name>My Input Component WebJar</name>
+  <description>WebJar for @yusufkumandaveren/my-input-component</description>
+  <url>https://github.com/Yusufkumandaveren/lit-input-component</url>
+
+  <licenses>
+    <license>
+      <name>MIT License</name>
+      <url>https://opensource.org/licenses/MIT</url>
+    </license>
+  </licenses>
+
+  <developers>
+    <developer>
+      <id>yusufkumandaveren</id>
+      <name>Yusuf Kumandaveren</name>
+      <url>https://github.com/Yusufkumandaveren</url>
+    </developer>
+  </developers>
+
+  <scm>
+    <connection>scm:git:git://github.com/Yusufkumandaveren/lit-input-component.git</connection>
+    <developerConnection>scm:git:ssh://github.com:Yusufkumandaveren/lit-input-component.git</developerConnection>
+    <url>https://github.com/Yusufkumandaveren/lit-input-component</url>
+  </scm>
+
+  <build>
+    <plugins>
+      <plugin>
+        <artifactId>maven-resources-plugin</artifactId>
+        <version>3.3.1</version>
+        <executions>
+          <execution>
+            <id>copy-lit-dist</id>
+            <phase>process-resources</phase>
+            <goals><goal>copy-resources</goal></goals>
+            <configuration>
+              <outputDirectory>
+                ${project.build.outputDirectory}/META-INF/resources/webjars/${project.artifactId}/${project.version}
+              </outputDirectory>
+              <resources>
+                <resource>
+                  <directory>${project.basedir}/../dist</directory>
+                  <includes>
+                    <include>**/*</include>
+                  </includes>
+                </resource>
+              </resources>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+    </plugins>
+  </build>
+
+  <distributionManagement>
+    <repository>
+      <id>github</id>
+      <name>GitHub Packages</name>
+      <url>https://maven.pkg.github.com/Yusufkumandaveren/lit-input-component</url>
+    </repository>
+  </distributionManagement>
+
+</project>
